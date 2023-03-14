@@ -1,18 +1,18 @@
 @php
-$user_role = auth()->user()->role;
-$admin = 1;
-$staff = 0;
-$branch = 3;
-$client = 4;
-$driver = 5;
+    $user_role = auth()->user()->role;
+    $admin = 1;
+    $staff = 0;
+    $branch = 3;
+    $client = 4;
+    $driver = 5;
 @endphp
 
 
 @if (auth()->user()->can('manage-shipments') || in_array($user_role, [$admin, $client, $branch]))
     <li
-        class="nav-item {{ areActiveRoutes(['shipments','shipments.create','shipments.import','shipments.add.api','shipments.barcode.scanner','shipment-calc','shipments.index'],'menu-is-opening menu-open active') }} @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item) {{ areActiveRoutes([$item['route_name']], 'menu-is-opening menu-open active') }} @endforeach ">
+        class="nav-item {{ areActiveRoutes(['shipments', 'shipments.create', 'shipments.import', 'shipments.add.api', 'shipments.barcode.scanner', 'shipment-calc', 'shipments.index'], 'menu-is-opening menu-open active') }} @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item) {{ areActiveRoutes([$item['route_name']], 'menu-is-opening menu-open active') }} @endforeach ">
         <a href="#"
-            class="nav-link {{ areActiveRoutes(['shipments','shipments.create','shipments.import','shipments.add.api','shipments.barcode.scanner','shipment-calc','shipments.index'],'menu-is-opening menu-open active') }} @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item) {{ areActiveRoutes([$item['route_name']], 'menu-is-opening menu-open active') }} @endforeach  ">
+            class="nav-link {{ areActiveRoutes(['shipments', 'shipments.create', 'shipments.import', 'shipments.add.api', 'shipments.barcode.scanner', 'shipment-calc', 'shipments.index'], 'menu-is-opening menu-open active') }} @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item) {{ areActiveRoutes([$item['route_name']], 'menu-is-opening menu-open active') }} @endforeach  ">
             <i class="fas fa-box-open"></i>
             <p>
                 {{ __('cargo::view.shipments') }}
@@ -23,6 +23,14 @@ $driver = 5;
         <ul class="nav nav-treeview">
             <!-- Shipment Menu -->
             @if (auth()->user()->can('manage-shipments') || in_array($user_role, [$admin, $client, $branch]))
+
+                <li class="nav-item">
+                    <a href="{{ fr_route('shipments.index') }}"
+                        class="nav-link {{ areActiveRoutes(['shipments.index']) }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>{{ __('cargo::view.all_Shipments') }}</p>
+                    </a>
+                </li>
 
                 <!-- create shipment -->
                 @if (auth()->user()->can('create-shipments') || in_array($user_role, [$admin, $client, $branch]))
@@ -37,7 +45,8 @@ $driver = 5;
 
 
 
-                @if (in_array($user_role, [$admin, $client, $branch]) || auth()->user()->can('import-shipments'))
+                @if (in_array($user_role, [$admin, $client, $branch]) ||
+                        auth()->user()->can('import-shipments'))
                     <!-- import shipment -->
                     <li class="nav-item">
                         <a href="{{ fr_route('shipments.import') }}"
@@ -48,7 +57,8 @@ $driver = 5;
                     </li>
                 @endif
 
-                @if ($user_role == $client)
+
+                {{-- @if ($user_role == $client)
                     <!-- shipment api -->
                     <li class="nav-item">
                         <a href="{{ fr_route('shipments.add.api') }}"
@@ -57,7 +67,7 @@ $driver = 5;
                             <p>{{ __('cargo::view.shipment_apis') }}</p>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 <!-- shipment barcode scanner -->
                 @if (auth()->user()->can('shipments-barcode-scanner') || $user_role == $admin)
@@ -82,30 +92,30 @@ $driver = 5;
                 @endif
 
                 <!-- all shipments -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ fr_route('shipments.index') }}"
                         class="nav-link {{ areActiveRoutes(['shipments.index']) }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>{{ __('cargo::view.all_Shipments') }}</p>
                     </a>
-                </li>
+                </li> --}}
 
 
-                @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item)
+                {{-- @foreach (Modules\Cargo\Entities\Shipment::status_info() as $item)
                     @if (in_array($user_role, [$admin, $client, $branch]) ||
-    auth()->user()->hasAnyDirectPermission($item['permissions']))
+                            auth()->user()->hasAnyDirectPermission($item['permissions']))
                         @if ($item['status'] == Modules\Cargo\Entities\Shipment::SAVED_STATUS)
                             <li class="nav-item">
                                 <a href="{{ route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}"
-                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'],'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}">
+                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('cargo::view.saved_pickup') }}</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route($item['route_name'], ['status' => $item['status'],'type' => Modules\Cargo\Entities\Shipment::DROPOFF]) }}"
-                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'],'type' => Modules\Cargo\Entities\Shipment::DROPOFF]) }}">
+                                <a href="{{ route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::DROPOFF]) }}"
+                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::DROPOFF]) }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('cargo::view.saved_dropoff') }}</p>
                                 </a>
@@ -113,7 +123,7 @@ $driver = 5;
                         @elseif($item['status'] == Modules\Cargo\Entities\Shipment::REQUESTED_STATUS)
                             <li class="nav-item">
                                 <a href="{{ route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}"
-                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'],'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}">
+                                    class="nav-link {{ active_route($item['route_name'], ['status' => $item['status'], 'type' => Modules\Cargo\Entities\Shipment::PICKUP]) }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('cargo::view.requested_pickup') }}</p>
                                 </a>
@@ -128,7 +138,7 @@ $driver = 5;
                             </li>
                         @endif
                     @endif
-                @endforeach
+                @endforeach --}}
 
             @endif
         </ul>
@@ -137,9 +147,9 @@ $driver = 5;
 
 
 @if (auth()->user()->can('manage-missions') ||
-    $user_role == $admin ||
-    $user_role == $branch ||
-    $user_role == $driver)
+        $user_role == $admin ||
+        $user_role == $branch ||
+        $user_role == $driver)
     <li
         class="nav-item {{ active_uri('missions', ['class_name' => 'show']) }} {{ areActiveRoutes(['missions', 'missions.index'], 'menu-is-opening menu-open active') }}  @foreach (Modules\Cargo\Entities\Mission::status_info() as $item) {{ areActiveRoutes([$item['route_name']], 'menu-is-opening menu-open active') }} @endforeach">
         <a href="#"
@@ -154,9 +164,9 @@ $driver = 5;
         <ul class="nav nav-treeview">
             <!-- Mission Menu -->
             @if (auth()->user()->can('manage-missions') ||
-    $user_role == $admin ||
-    $user_role == $branch ||
-    $user_role == $driver)
+                    $user_role == $admin ||
+                    $user_role == $branch ||
+                    $user_role == $driver)
 
                 <li class="nav-item">
                     <a href="{{ fr_route('missions.index') }}"
@@ -168,7 +178,7 @@ $driver = 5;
 
                 @foreach (Modules\Cargo\Entities\Mission::status_info() as $item)
                     @if (in_array($user_role, $item['user_role']) ||
-    auth()->user()->hasAnyDirectPermission($item['permissions']))
+                            auth()->user()->hasAnyDirectPermission($item['permissions']))
                         <li class="nav-item">
                             <a href="{{ route($item['route_name'], ['status' => $item['status']]) }}"
                                 class="nav-link {{ active_route($item['route_name'], ['status' => $item['status']]) }}">
@@ -187,8 +197,7 @@ $driver = 5;
 
 @if (auth()->user()->can('manage-manifests') || in_array($user_role, [$admin, $driver, $branch]))
     <li class="nav-item   {{ areActiveRoutes(['missions.manifests'], 'menu-is-opening menu-open active') }}">
-        <a href="{{ fr_route('missions.manifests') }}"
-            class="nav-link {{ areActiveRoutes(['missions.manifests']) }}">
+        <a href="{{ fr_route('missions.manifests') }}" class="nav-link {{ areActiveRoutes(['missions.manifests']) }}">
             <i class="fas fa-truck-moving fa-fw"></i>
             <p>{{ __('cargo::view.manifest') }}</p>
         </a>
@@ -198,9 +207,9 @@ $driver = 5;
 
 @if (auth()->user()->can('manage-transactions') || in_array($user_role, [$admin, $branch, $driver, $client]))
     <li
-        class="nav-item {{ active_uri('transactions', ['class_name' => 'show']) }}  {{ areActiveRoutes(['transactions', 'transactions.create', 'transactions.index'],'menu-is-opening menu-open active') }}">
+        class="nav-item {{ active_uri('transactions', ['class_name' => 'show']) }}  {{ areActiveRoutes(['transactions', 'transactions.create', 'transactions.index'], 'menu-is-opening menu-open active') }}">
         <a href="#"
-            class="nav-link {{ active_uri('transactions') }}  {{ areActiveRoutes(['transactions', 'transactions.create', 'transactions.index'],'menu-is-opening menu-open active') }}">
+            class="nav-link {{ active_uri('transactions') }}  {{ areActiveRoutes(['transactions', 'transactions.create', 'transactions.index'], 'menu-is-opening menu-open active') }}">
             <i class="fas fa-money-check-alt"></i>
             <p>
                 {{ __('cargo::view.transactions') }}
@@ -239,14 +248,14 @@ $driver = 5;
 
 
 @if (auth()->user()->can('manage-branches') ||
-    auth()->user()->can('manage-customers') ||
-    auth()->user()->can('manage-drivers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+        auth()->user()->can('manage-customers') ||
+        auth()->user()->can('manage-drivers') ||
+        $user_role == $admin ||
+        $user_role == $branch)
     <li
-        class="nav-item {{ active_uri('shipment-team', ['class_name' => 'show']) }} {{ areActiveRoutes(['branches','branches.create','branches.index','branches','clients.index','clients.create','clients','drivers.index','drivers.create','drivers','shipment-team'],'menu-is-opening menu-open active') }}">
+        class="nav-item {{ active_uri('shipment-team', ['class_name' => 'show']) }} {{ areActiveRoutes(['branches', 'branches.create', 'branches.index', 'branches', 'clients.index', 'clients.create', 'clients', 'drivers.index', 'drivers.create', 'drivers', 'shipment-team'], 'menu-is-opening menu-open active') }}">
         <a href="#"
-            class="nav-link {{ areActiveRoutes(['branches','branches.create','branches.index','branches','clients.index','clients.create','clients','drivers.index','drivers.create','drivers','shipment-team'],'menu-is-opening menu-open active') }}">
+            class="nav-link {{ areActiveRoutes(['branches', 'branches.create', 'branches.index', 'branches', 'clients.index', 'clients.create', 'clients', 'drivers.index', 'drivers.create', 'drivers', 'shipment-team'], 'menu-is-opening menu-open active') }}">
             <i class="fas fa-users"></i>
             <p>
                 {{ __('cargo::view.shipment_team') }}
@@ -299,8 +308,8 @@ $driver = 5;
 
             <!-- Customer Menu -->
             @if (auth()->user()->can('manage-customers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                    $user_role == $admin ||
+                    $user_role == $branch)
 
                 <li
                     class="nav-item {{ active_uri('clients', ['class_name' => 'show']) }} {{ areActiveRoutes(['clients.index', 'clients.create', 'clients'], 'menu-is-opening menu-open active') }}">
@@ -317,8 +326,8 @@ $driver = 5;
 
                         <!-- Customers list -->
                         @if (auth()->user()->can('view-customers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                                $user_role == $admin ||
+                                $user_role == $branch)
                             <li class="nav-item">
                                 <a href="{{ fr_route('clients.index') }}"
                                     class="nav-link {{ areActiveRoutes(['clients.index']) }}">
@@ -330,8 +339,8 @@ $driver = 5;
 
                         <!-- Create new customer -->
                         @if (auth()->user()->can('create-customers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                                $user_role == $admin ||
+                                $user_role == $branch)
                             <li class="nav-item">
                                 <a href="{{ fr_route('clients.create') }}"
                                     class="nav-link {{ areActiveRoutes(['clients.create']) }}">
@@ -347,8 +356,8 @@ $driver = 5;
 
             <!-- Driver Menu -->
             @if (auth()->user()->can('manage-drivers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                    $user_role == $admin ||
+                    $user_role == $branch)
 
                 <li
                     class="nav-item {{ active_uri('drivers', ['class_name' => 'show']) }}  {{ areActiveRoutes(['drivers.index', 'drivers.create', 'drivers'], 'menu-is-opening menu-open active') }}">
@@ -364,8 +373,8 @@ $driver = 5;
 
                         <!-- Driver list -->
                         @if (auth()->user()->can('view-drivers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                                $user_role == $admin ||
+                                $user_role == $branch)
                             <li class="nav-item">
                                 <a href="{{ fr_route('drivers.index') }}"
                                     class="nav-link {{ areActiveRoutes(['drivers.index']) }}">
@@ -377,8 +386,8 @@ $driver = 5;
 
                         <!-- Create new driver -->
                         @if (auth()->user()->can('create-drivers') ||
-    $user_role == $admin ||
-    $user_role == $branch)
+                                $user_role == $admin ||
+                                $user_role == $branch)
                             <li class="nav-item">
                                 <a href="{{ fr_route('drivers.create') }}"
                                     class="nav-link {{ areActiveRoutes(['drivers.create']) }}">

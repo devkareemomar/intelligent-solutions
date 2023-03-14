@@ -21,7 +21,7 @@ class MissionsController extends Controller
 {
     public function getCaptainMissions(Request $request)
     {
-        
+
         $apihelper = new ApiHelper();
         $user = $apihelper->checkUser($request);
         if($user){
@@ -66,7 +66,7 @@ class MissionsController extends Controller
 
     public function RemoveShipmetnFromMission(Request $request)
     {
-        
+
         $apihelper = new ApiHelper();
         $user = $apihelper->checkUser($request);
         if($user){
@@ -90,7 +90,7 @@ class MissionsController extends Controller
 
     public function getReasons(Request $request)
     {
-        
+
         $apihelper = new ApiHelper();
         $user = $apihelper->checkUser($request);
         if($user){
@@ -100,5 +100,5 @@ class MissionsController extends Controller
             return response()->json(['message' => 'Not Authorized']);
         }
     }
-    
+
 }

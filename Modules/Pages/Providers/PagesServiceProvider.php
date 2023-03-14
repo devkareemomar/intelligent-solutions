@@ -29,14 +29,14 @@ class PagesServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $adminTheme = env('ADMIN_THEME', 'adminLte');
-        
-        $aside_menu = view('pages::'.$adminTheme.'.components.aside_menu');
-        $aside_menu['order'] = 2;
-        app('hook')->set('aside_menu', $aside_menu, 'array');
+        // $adminTheme = env('ADMIN_THEME', 'adminLte');
 
-        $select_page_menu_components = view('pages::'.$adminTheme.'.components.select_page_to_menu');
-        app('hook')->set('menu_addables', $select_page_menu_components, 'array');
+        // $aside_menu = view('pages::'.$adminTheme.'.components.aside_menu');
+        // $aside_menu['order'] = 2;
+        // app('hook')->set('aside_menu', $aside_menu, 'array');
+
+        // $select_page_menu_components = view('pages::'.$adminTheme.'.components.select_page_to_menu');
+        // app('hook')->set('menu_addables', $select_page_menu_components, 'array');
     }
 
     /**

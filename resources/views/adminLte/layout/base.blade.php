@@ -19,7 +19,7 @@
         <meta property="og:type" content="article" />
         <meta property="og:title" content="{{ \Str::title(get_general_setting('company_name', config('app.name'))) }}" />
 
-        @php 
+        @php
             $model = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
         @endphp
         <link rel="shortcut icon" href="{{ $model->getFirstMediaUrl('system_logo') ? $model->getFirstMediaUrl('system_logo') : asset('assets/lte/media/logos/favicon.png') }}" />
@@ -27,10 +27,11 @@
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
+
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{ asset('assets/lte/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
         <!--end::Global Stylesheets Bundle-->
-        
+
         <!-- Select2 -->
         <link rel="stylesheet" href="{{ asset('assets/lte') }}/plugins/select2/css/select2.min.css">
         <!-- Theme style -->
@@ -57,7 +58,7 @@
         <link rel="stylesheet" href="{{ asset('assets/lte') }}/plugins/dropzone/min/dropzone.min.css">
         <!-- flag-icon-css -->
         <link rel="stylesheet" href="{{ asset('assets/lte') }}/plugins/flag-icon-css/css/flag-icon.min.css">
-        
+
         <!--begin::Custom Stylesheets-->
 		<link href="{{ asset('assets/global/css/app.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/custom/css/custom.css') }}" rel="stylesheet" type="text/css" />
@@ -89,7 +90,7 @@
         <div class="wrapper">
 
             <!-- Preloader -->
-            @php 
+            @php
                 $model = App\Models\Settings::where('group', 'general')->where('name','loading_logo')->first();
                 $system_logo = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
             @endphp
@@ -109,7 +110,7 @@
             <div class="content-wrapper">
 
                 @include('adminLte.components.page-title')
-                
+
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
@@ -181,7 +182,8 @@
             bsCustomFileInput.init();
             });
         </script>
-		
+
+
 		{{-- Show message alert from session flash --}}
 		@include('adminLte.helpers.message-alert')
 		<!--end::Javascript-->

@@ -1437,7 +1437,7 @@ var defaults = {
    * @default null
    * @example
    *  {
-   *   'black': '#000000',
+   *   'black': '#0000',
    *   'white': '#ffffff',
    *   'red': '#FF0000',
    *   'default': '#777777',
@@ -5889,7 +5889,7 @@ var ColorHandler = function () {
 
       if (!color.isValid()) {
         console.warn('The fallback color is invalid. Falling back to the previous color or black if any.');
-        return this.color ? this.color : new _ColorItem2.default('#000000', this.format);
+        return this.color ? this.color : new _ColorItem2.default('#0000', this.format);
       }
 
       return color;

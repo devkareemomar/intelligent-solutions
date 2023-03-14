@@ -1,4 +1,4 @@
-	
+
 @php
 $n = 0;
 use \Milon\Barcode\DNS1D;
@@ -21,7 +21,7 @@ $cash_payment = 'cash_payment';
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td valign="middle" style="padding-left:5px; height: 90px;">
-                                            @php 
+                                            @php
                                                 $system_logo = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
                                             @endphp
                                             <img alt="Logo" src="{{  $system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo.svg') }}" class="logo" style="max-height: 90px;" />
@@ -31,7 +31,7 @@ $cash_payment = 'cash_payment';
                             </td>
                         </tr>
                         <tr>
-                            <td height="21px" colspan="3" style="border-top:#000000  1px solid;border-bottom:#000000 1px solid;">
+                            <td height="21px" colspan="3" style="border-top:#0000  1px solid;border-bottom:#0000 1px solid;">
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="81%" height="21px" valign="top">
@@ -56,14 +56,14 @@ $cash_payment = 'cash_payment';
                                             </table>
                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td style="border-top: 1px solid #000000; border-bottom: 0px solid #000000;">
+                                                    <td style="border-top: 1px solid #0000; border-bottom: 0px solid #0000;">
                                                         <div style="margin-top:1px;">
                                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                     <td style="text-align: center; padding-top: 10px;" colspan="1">
                                                                         <span style="font-size:16px; font-weight:bold; padding:10px;">
                                                                         @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID && $shipment->payment_method_id != $cash_payment )
-                                                                            {{ __('cargo::view.POSTPAID') }}: 
+                                                                            {{ __('cargo::view.POSTPAID') }}:
                                                                         @elseif($shipment->payment_type == Modules\Cargo\Entities\Shipment::PREPAID)
                                                                             {{ __('cargo::view.PREPAID') }}:
                                                                         @elseif($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID && $shipment->payment_method_id == $cash_payment )
@@ -71,13 +71,13 @@ $cash_payment = 'cash_payment';
                                                                         @endif
 
                                                                         @if ($shipment->amount_to_be_collected && $shipment->amount_to_be_collected  > 0)
-                                                                            
+
                                                                             @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->amount_to_be_collected + $shipment->tax + $shipment->shipping_cost + $shipment->insurance)}}
                                                                             @else
                                                                                 {{format_price($shipment->amount_to_be_collected)}}
                                                                             @endif
-                                                                            
+
                                                                         @else
                                                                             @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance)}}
@@ -149,7 +149,7 @@ $cash_payment = 'cash_payment';
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#000000 1px solid;">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#0000 1px solid;">
                                                 <tr>
                                                     <td style="padding:5px; font-size:12px; text-align:center">
                                                         <span style="font-weight:bold; font-size: 14px;">{{ __('cargo::view.contains') }}: </span>
@@ -179,7 +179,7 @@ $cash_payment = 'cash_payment';
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td valign="middle" style="padding-left:5px; height: 90px;">
-                                            @php 
+                                            @php
                                                 $system_logo = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
                                             @endphp
                                             <img alt="Logo" src="{{  $system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo.svg') }}" class="logo" style="max-height: 90px;" />
@@ -189,7 +189,7 @@ $cash_payment = 'cash_payment';
                             </td>
                         </tr>
                         <tr>
-                            <td height="21px" colspan="3" style="border-top:#000000  1px solid;border-bottom:#000000 1px solid;">
+                            <td height="21px" colspan="3" style="border-top:#0000  1px solid;border-bottom:#0000 1px solid;">
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="81%" height="21px" valign="top">
@@ -214,14 +214,14 @@ $cash_payment = 'cash_payment';
                                             </table>
                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td style="border-top: 1px solid #000000; border-bottom: 0px solid #000000;">
+                                                    <td style="border-top: 1px solid #0000; border-bottom: 0px solid #0000;">
                                                         <div style="margin-top:1px;">
                                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                     <td style="text-align: center; padding-top: 10px;" colspan="1">
                                                                         <span style="font-size:16px; font-weight:bold; padding:10px;">
                                                                         @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID && $shipment->payment_method_id != $cash_payment )
-                                                                            {{ __('cargo::view.POSTPAID') }}: 
+                                                                            {{ __('cargo::view.POSTPAID') }}:
                                                                         @elseif($shipment->payment_type == Modules\Cargo\Entities\Shipment::PREPAID)
                                                                             {{ __('cargo::view.PREPAID') }}:
                                                                         @elseif($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID && $shipment->payment_method_id == $cash_payment )
@@ -229,13 +229,13 @@ $cash_payment = 'cash_payment';
                                                                         @endif
 
                                                                         @if ($shipment->amount_to_be_collected && $shipment->amount_to_be_collected  > 0)
-                                                                            
+
                                                                             @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->amount_to_be_collected + $shipment->tax + $shipment->shipping_cost + $shipment->insurance)}}
                                                                             @else
                                                                                 {{format_price($shipment->amount_to_be_collected)}}
                                                                             @endif
-                                                                            
+
                                                                         @else
                                                                             @if($shipment->payment_type == Modules\Cargo\Entities\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance)}}
@@ -307,7 +307,7 @@ $cash_payment = 'cash_payment';
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#000000 1px solid;">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#0000 1px solid;">
                                                 <tr>
                                                     <td style="padding:5px; font-size:12px; text-align:center">
                                                         <span style="font-weight:bold; font-size: 14px;">{{ __('cargo::view.contains') }}: </span>
@@ -467,7 +467,7 @@ $cash_payment = 'cash_payment';
                 page-break-before: always;
             }
         </style>
-        
+
         <div class="main-container not-first-unit-container">
             <div class="upper-units-container">
                 <div class="upper-units-container">
@@ -481,7 +481,7 @@ $cash_payment = 'cash_payment';
                             {{\Carbon\Carbon::parse($shipment->shipping_date)->format('d-m-Y')}}
                         @endif</span>
                     </div>
-                    
+
                     @if($shipment->collection_time != null)
                         <div class="float-right item-info-container text-align-right">
                             {{ __('cargo::view.collection_time') }}:<span> {{$shipment->collection_time}} /</span>

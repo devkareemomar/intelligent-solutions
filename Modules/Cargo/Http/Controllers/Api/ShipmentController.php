@@ -51,7 +51,7 @@ class ShipmentController
     {
         $apihelper = new ApiHelper();
         $user = $apihelper->checkUser($request);
-		
+		// dd($user);
         if($user){
             $mission_shipments = ShipmentMission::where('mission_id', $request->mission_id )->with('shipment' , 'shipment.from_address')->get();
             return response()->json($mission_shipments);
@@ -149,7 +149,7 @@ class ShipmentController
             return response()->json($confirmType);
         }else{
             return response()->json(['message' => 'Not Authorized']);
-        } 
+        }
     }
 
     public function getBranchs(Request $request)

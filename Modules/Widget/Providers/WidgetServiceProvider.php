@@ -29,10 +29,10 @@ class WidgetServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $adminTheme = env('ADMIN_THEME', 'adminLte');
-        $aside_menu = view('widget::'.$adminTheme.'.components.aside_menu');
-        $aside_menu['order'] = 8;
-        app('hook')->set('aside_menu', $aside_menu, 'array');
+        // $adminTheme = env('ADMIN_THEME', 'adminLte');
+        // $aside_menu = view('widget::'.$adminTheme.'.components.aside_menu');
+        // $aside_menu['order'] = 8;
+        // app('hook')->set('aside_menu', $aside_menu, 'array');
     }
 
     /**

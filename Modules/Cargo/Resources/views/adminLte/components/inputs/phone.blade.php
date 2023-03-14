@@ -15,7 +15,7 @@
 
 <script>
     $(function () {
-        
+
         var phoneNumbers = $('.phone_input'),
             wrong_number = window.wrong_number_msg,
             required_phone = window.required_phone
@@ -30,7 +30,7 @@
             var iti = window.intlTelInput(input, {
                 separateDialCode: true,
                 utilsScript: window.static_asset_utils_file,
-                initialCountry: "ng",
+                initialCountry: "eg",
                 preferredCountries: ["eg","ng","ke"],
                 autoPlaceholder: "aggressive"
             });

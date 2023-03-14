@@ -504,6 +504,7 @@ return [
         'customer_source' => 'مصدر العميل',
         'owner_type' => 'نوع المالك',
         'owner_name' => 'اسم المالك',
+        'status' => 'الحاله',
     ],
     'missions_costs' => 'تكاليف  المهمه',
     'default_missions_costs' => 'تكاليف المهمه الافتراضية',
@@ -719,4 +720,6 @@ return [
     'set_default_addresses' => 'تعيين العنوان الافتراضي',
     'send_app'=>'Send App',
     'check_number_length' => 'يجب أن يكون عدد الأحرف أكثر من 8',
+
+    'statistics' => 'الإحصائيات'
 ];

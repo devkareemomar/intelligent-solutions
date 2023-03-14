@@ -5195,7 +5195,7 @@ aside#bd-MobileSiderbar div.bdaia-social-io a {
   position: absolute;
   bottom: 0;
   padding: 5px;
-  background-color: #000000;
+  background-color: #0000;
   left: 0;
   right: 0;
   margin: 0;
@@ -13740,7 +13740,7 @@ a.bdaia-featured-img-cover:before {
   background: -o-linear-gradient(top, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
   background: -ms-linear-gradient(top, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
   background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#b3000000", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#b3000000", GradientType=0);
 }
 
 /**
@@ -14819,7 +14819,7 @@ div.bdaia-above-header {
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000",endColorstr="#b3000000",GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#b3000000",GradientType=0);
 }
 
 /**
@@ -15373,7 +15373,7 @@ h4.block-title a {
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#b3000000", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#b3000000", GradientType=0);
 }
 .bd-post-carousel-item .bd-post-carousel-thumb img {
   max-width: 100%;
@@ -32684,7 +32684,7 @@ div.bdaia-search-form form input.search-submit {
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.8) 100%);
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.8) 100%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#b3000000", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#b3000000", GradientType=0);
 }
 .slider-area .cover-item .vid-play {
   position: absolute;
@@ -35768,8 +35768,8 @@ div.bdaia-search-form form input.search-submit {
   background: #ddd;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
-  /*background: -webkit-linear-gradient( #77082c 0%, #222222 77%, #000000 100%);
-  background:linear-gradient(#77082c 0%,#222222 77%,#000000 100%);*/
+  /*background: -webkit-linear-gradient( #77082c 0%, #222222 77%, #0000 100%);
+  background:linear-gradient(#77082c 0%,#222222 77%,#0000 100%);*/
 }
 @media (max-width: 900px) {
   .slider-area.cover-full-with-bg {
@@ -36340,7 +36340,7 @@ div.bd-sidebar .widget .bdaia-widget-tabs .bdaia-tabs-nav::after,
 .widget.widget_calendar #today {
   background-color: #ededed;
   font-weight: bold;
-  color: #000000;
+  color: #0000;
 }
 .widget.widget_calendar caption {
   font-weight: bold;
@@ -37192,7 +37192,7 @@ body.demo-times nav#navigation.nav-boxed .bd-container-post {
 }
 body.demo-times nav#navigation.nav-boxed .navigation-inner {
   background: #FFF;
-  border-top: 3px solid #000000;
+  border-top: 3px solid #0000;
   border-bottom: 1px solid #d5d5d5;
 }
 @media (max-width: 767px) {
@@ -40690,12 +40690,12 @@ body:not(.bdaia-boxed) .articles-box.articles-box-dark .bd_f_button span._2:befo
     margin: 0 auto !important;
 }
 
-#shipments-tracking-page #shipments-tracking .tracking-error 
+#shipments-tracking-page #shipments-tracking .tracking-error
 {
   margin: 30px;
 }
 
-#shipments-tracking-page #shipments-tracking .tracking-error p 
+#shipments-tracking-page #shipments-tracking .tracking-error p
 {
   background-color: #dc35451f;
   color: #dc3545;

@@ -50,7 +50,7 @@
 }
 
 .text-black {
-  color: #000000 !important;
+  color: #0000 !important;
 }
 
 a,
@@ -140,7 +140,7 @@ body {
 }
 
 .section .intro {
-  color: #000000;
+  color: #0000;
   margin-bottom: 1.6rem;
 }
 
@@ -214,7 +214,7 @@ body {
 #open-calculator .contents a.h3 {
   text-decoration: none;
   display: inline-block;
-  
+
 }
 
 #globus .intro .link {

@@ -28,20 +28,20 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        // $adminTheme = env('ADMIN_THEME', 'adminLte');
 
-        $aside_menu = view('blog::'.$adminTheme.'.components.aside_menu');
-        $aside_menu['order'] = 1;
-        app('hook')->set('aside_menu', $aside_menu, 'array');
+        // $aside_menu = view('blog::'.$adminTheme.'.components.aside_menu');
+        // $aside_menu['order'] = 1;
+        // app('hook')->set('aside_menu', $aside_menu, 'array');
 
-        $aside_menu_settings = view('blog::'.$adminTheme.'.components.aside_menu_settings');
-        app('hook')->set('aside_menu_settings', $aside_menu_settings, 'array');
+        // $aside_menu_settings = view('blog::'.$adminTheme.'.components.aside_menu_settings');
+        // app('hook')->set('aside_menu_settings', $aside_menu_settings, 'array');
 
-        $select_category_menu_components = view('blog::'.$adminTheme.'.components.select_category_to_menu');
-        $select_post_menu_components = view('blog::'.$adminTheme.'.components.select_post_to_menu');
-        
-        app('hook')->set('menu_addables', $select_category_menu_components, 'array');
-        app('hook')->set('menu_addables', $select_post_menu_components, 'array');
+        // $select_category_menu_components = view('blog::'.$adminTheme.'.components.select_category_to_menu');
+        // $select_post_menu_components = view('blog::'.$adminTheme.'.components.select_post_to_menu');
+
+        // app('hook')->set('menu_addables', $select_category_menu_components, 'array');
+        // app('hook')->set('menu_addables', $select_post_menu_components, 'array');
     }
 
     /**

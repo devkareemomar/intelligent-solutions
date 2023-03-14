@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="profile" href="http://gmpg.org/xfn/11" />
-    
+
     <title>@yield('page-title') | {{ \Str::title(get_general_setting('website_title', config('app.name'))) }} </title>
     <meta name="description" content="@yield('page-description', get_general_setting('website_description', config('app.description')))">
     <meta name="keywords" content="@yield('page-keywords',  get_general_setting('website_keywords'))">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    @php 
+    @php
         $model = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
     @endphp
     <link rel="shortcut icon" href="{{ $model->getFirstMediaUrl('system_logo') ? $model->getFirstMediaUrl('system_logo') : asset('assets/lte/media/logos/favicon.ico') }}" />
-    
+
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('page-title') | {{ get_general_setting('website_title', config('app.name')) }}">
     <meta property="og:description" content="@yield('page-description', get_general_setting('website_description', config('app.description')))">

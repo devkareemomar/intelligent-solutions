@@ -24,16 +24,16 @@ class UsersServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $adminTheme = env('ADMIN_THEME', 'adminLte');
-        $aside_menu = view('users::'.$adminTheme.'.components.aside_menu');
-        $aside_menu['order'] = 10;
-        app('hook')->set('aside_menu', $aside_menu, 'array');
+        // $adminTheme = env('ADMIN_THEME', 'adminLte');
+        // $aside_menu = view('users::'.$adminTheme.'.components.aside_menu');
+        // $aside_menu['order'] = 10;
+        // app('hook')->set('aside_menu', $aside_menu, 'array');
     }
 
     /**
@@ -44,7 +44,7 @@ class UsersServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-        
+
         $this->app['events']->listen(\Modules\Users\Events\UserCreatedEvent::class, \Modules\Users\Listeners\UserCreatedListener::class);
         $this->app['events']->listen(\Modules\Users\Events\UserUpdatedEvent::class, \Modules\Users\Listeners\UserUpdatedListener::class);
         $this->app['events']->listen(\Modules\Users\Events\UserDeletedEvent::class, \Modules\Users\Listeners\UserDeletedListener::class);

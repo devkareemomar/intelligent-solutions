@@ -1,9 +1,7 @@
 @can('view-menus')
     <li class="nav-item">
-        <a href="{{ fr_route('menus.index') }}" class="nav-link   {{ areActiveRoutes(['menus.index']) }}">
-            <i class="fas fa-list fa-fw"></i>
-            <p>{{ __('menu::view.menus') }}</p>
+        <a href="{{ fr_route('menus.index') }}" class="nav-link  m-2  {{ areActiveRoutes(['menus.index']) }}">
+            {{ __('menu::view.menus') }}
         </a>
     </li>
 @endcan
- 

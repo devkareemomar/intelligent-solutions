@@ -232,4 +232,6 @@ return [
      'addon_deleted_successfully' => 'تم حذف الإضافة بنجاح',
      'disable' => 'إلغاء التفعيل',
      'you_just_change_status' => 'تم تغيير حالة الإضافة بنجاح',
+
+     'website_settings' => 'اعدادات الموقع',
 ];

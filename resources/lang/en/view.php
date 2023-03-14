@@ -248,5 +248,8 @@ return [
     'addon_deleted_successfully' => 'Addon deleted successfully',
     'disable' => 'Disable',
     'you_just_change_status' => 'Status has been update successfully',
+
+    'website_settings' => 'Website Settings',
+
 ];
 

@@ -30,7 +30,7 @@ use Modules\Acl\Repositories\AclRepository;
 class MissionController extends Controller
 {
     private $aclRepo;
-    
+
     public function __construct(AclRepository $aclRepository)
     {
         $this->aclRepo = $aclRepository;
@@ -71,7 +71,7 @@ class MissionController extends Controller
     {
         $request->validate([
             'Mission.captain_id' => 'required',
-            'Mission.due_date'   => 'required', 
+            'Mission.due_date'   => 'required',
         ]);
         // return $request;
         try{
@@ -297,7 +297,7 @@ class MissionController extends Controller
     {
         $request->validate([
             'captain_id'    => 'required',
-            'manifest_date' => 'required', 
+            'manifest_date' => 'required',
         ]);
 
         breadcrumb([

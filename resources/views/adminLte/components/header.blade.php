@@ -1,12 +1,12 @@
 @php
 
-$user_role = auth()->user()->role;
+    $user_role = auth()->user()->role;
 
-$admin = 1;
-$auth_staff = 0;
-$auth_branch = 3;
-$auth_client = 4;
-$auth_dilver = 5;
+    $admin = 1;
+    $auth_staff = 0;
+    $auth_branch = 3;
+    $auth_client = 4;
+    $auth_dilver = 5;
 @endphp
 
 
@@ -19,18 +19,10 @@ $auth_dilver = 5;
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-sm-inline-block mobile_section">
-            <a href="{{ fr_route('/') }}" target="_blank"
-                class="nav-link {{ active_route('/') }}">@lang('view.website')</a>
+            <a href="{{ fr_route('/') }}" target="_blank" class="nav-link {{ active_route('/') }}">@lang('view.website')</a>
         </li>
 
-        @if (check_module('Cargo'))
-            @if($user_role == $auth_branch || $user_role == $auth_client || auth()->user()->can('create-shipments'))
-            <li class="nav-item d-sm-inline-block mobile_section">
-                <a href="{{ LaravelLocalization::localizeUrl(route('shipments.create')) }}"
-                    class="nav-link {{ active_route('shipments.create') }}">{{ __('cargo::view.create_new_shipment') }}</a>
-            </li>
-            @endif
-        @endif
+
     </ul>
 
     <!-- Right navbar links -->
@@ -62,8 +54,7 @@ $auth_dilver = 5;
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                <span
-                    class="badge badge-warning navbar-badge">{{ \Auth::user()->unreadNotifications->count() }}</span>
+                <span class="badge badge-warning navbar-badge">{{ \Auth::user()->unreadNotifications->count() }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 @if (\Auth::user()->unreadNotifications->count() > 0)
@@ -99,96 +90,92 @@ $auth_dilver = 5;
                 <span class="dropdown-item dropdown-header">{{ auth()->user()->name }}</span>
                 <div class="dropdown-divider"></div>
                 @checkModule('users')
+                    {{-- Admin --}}
+                    @if ($user_role == $admin)
+                        <a href="{{ fr_route('users.show', ['id' => auth()->id()]) }}" class="dropdown-item">
+                            @lang('users::view.my_profile')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('users.edit', ['id' => auth()->id()]) }}" class="dropdown-item">
+                            @lang('users::view.account_settings')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
 
-                {{-- Admin --}}
-                @if ($user_role == $admin)
-                    <a href="{{ fr_route('users.show', ['id' => auth()->id()]) }}" class="dropdown-item">
-                        @lang('users::view.my_profile')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('users.edit', ['id' => auth()->id()]) }}" class="dropdown-item">
-                        @lang('users::view.account_settings')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                @endif
+                    {{-- client --}}
+                    @if ($user_role == $auth_client)
+                        @php
+                            $item_id = Modules\Cargo\Entities\Client::where('user_id', auth()->user()->id)
+                                ->pluck('id')
+                                ->first();
+                        @endphp
 
-                {{-- client --}}
-                @if ($user_role == $auth_client)
-                    @php
-                        $item_id = Modules\Cargo\Entities\Client::where('user_id', auth()->user()->id)
-                            ->pluck('id')
-                            ->first();
-                    @endphp
+                        <a href="{{ fr_route('clients.show', ['client' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.my_profile')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('clients.profile', ['id' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.account_settings')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('clients.manage-address') }}" class="dropdown-item">
+                            @lang('cargo::view.manage_address')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
 
-                    <a href="{{ fr_route('clients.show', ['client' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.my_profile')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('clients.profile', ['id' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.account_settings')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('clients.manage-address') }}" class="dropdown-item">
-                        @lang('cargo::view.manage_address')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                @endif
-
-                {{-- branch --}}
-                @if ($user_role == $auth_branch)
-                    @php
-                        $item_id = Modules\Cargo\Entities\Branch::where('user_id', auth()->user()->id)
-                            ->pluck('id')
-                            ->first();
-                    @endphp
-                    <a href="{{ fr_route('branches.show', ['branch' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.my_profile')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('branches.profile', ['id' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.account_settings')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                @endif
-
-
-                {{-- driver --}}
-                @if ($user_role == $auth_dilver)
-                    @php
-                        $item_id = Modules\Cargo\Entities\Driver::where('user_id', auth()->user()->id)
-                            ->pluck('id')
-                            ->first();
-                    @endphp
-                    <a href="{{ fr_route('drivers.show', ['driver' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.my_profile')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('drivers.profile', ['id' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.account_settings')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                @endif
+                    {{-- branch --}}
+                    @if ($user_role == $auth_branch)
+                        @php
+                            $item_id = Modules\Cargo\Entities\Branch::where('user_id', auth()->user()->id)
+                                ->pluck('id')
+                                ->first();
+                        @endphp
+                        <a href="{{ fr_route('branches.show', ['branch' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.my_profile')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('branches.profile', ['id' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.account_settings')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
 
 
-                {{-- staff --}}
-                @if ($user_role == $auth_staff)
-                    @php
-                        $item_id = Modules\Cargo\Entities\Staff::where('user_id', auth()->user()->id)
-                            ->pluck('id')
-                            ->first();
-                    @endphp
-                    <a href="{{ fr_route('staffs.show', ['staff' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.my_profile')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ fr_route('staffs.profile', ['id' => $item_id]) }}" class="dropdown-item">
-                        @lang('users::view.account_settings')
-                    </a>
-                    <div class="dropdown-divider"></div>
-                @endif
+                    {{-- driver --}}
+                    @if ($user_role == $auth_dilver)
+                        @php
+                            $item_id = Modules\Cargo\Entities\Driver::where('user_id', auth()->user()->id)
+                                ->pluck('id')
+                                ->first();
+                        @endphp
+                        <a href="{{ fr_route('drivers.show', ['driver' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.my_profile')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('drivers.profile', ['id' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.account_settings')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
 
 
-
+                    {{-- staff --}}
+                    @if ($user_role == $auth_staff)
+                        @php
+                            $item_id = Modules\Cargo\Entities\Staff::where('user_id', auth()->user()->id)
+                                ->pluck('id')
+                                ->first();
+                        @endphp
+                        <a href="{{ fr_route('staffs.show', ['staff' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.my_profile')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ fr_route('staffs.profile', ['id' => $item_id]) }}" class="dropdown-item">
+                            @lang('users::view.account_settings')
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
                 @endcheckModule
                 <form id="formLogout" method="POST" action="{{ fr_route('logout') }}">
                     @csrf
@@ -207,8 +194,8 @@ $auth_dilver = 5;
                     @endif{{ LaravelLocalization::getCurrentLocaleName() }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
-                    @foreach (Modules\Localization\Entities\Language::all() as $key => $language  )
-                    {{-- {{ dd($language) }} --}}
+                    @foreach (Modules\Localization\Entities\Language::all() as $key => $language)
+                        {{-- {{ dd($language) }} --}}
                         <a href="{{ LaravelLocalization::getLocalizedURL($language->code) }}" class="dropdown-item">
                             @if ($language->imageUrl)
                                 <img class="flag-icon mr-2" src="{{ $language->imageUrl }}" alt="" />
@@ -224,6 +211,20 @@ $auth_dilver = 5;
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+        @if (check_module('Cargo'))
+            @if (
+                $user_role == $auth_branch ||
+                    $user_role == $auth_client ||
+                    auth()->user()->can('create-shipments'))
+                <li class="nav-item d-sm-inline-block mobile_section">
+                    <a href="{{ LaravelLocalization::localizeUrl(route('shipments.create')) }}"
+                        class="btn  text-white  {{ active_route('shipments.create') }}" style="background-color: #e30613;">
+                        {{ __('cargo::view.create_new_shipment') }}
+                        <i class="fas fa-plus fa-fw {{(isset($current_lang) && $current_lang->dir == 'rtl')? 'mt-2' : ''}} "></i>
+                    </a>
+                </li>
+            @endif
+        @endif
         <!-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
@@ -239,5 +240,4 @@ $auth_dilver = 5;
             display: none !important;
         }
     }
-
 </style>

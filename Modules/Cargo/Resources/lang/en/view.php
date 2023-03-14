@@ -507,6 +507,8 @@ return [
         'customer_source' => 'Customer Source',
         'owner_type' => 'Owner Type',
         'owner_name' => 'Owner Name',
+        'status' => 'Status',
+
     ],
     'missions_costs' => 'Missions Costs',
     'default_missions_costs' => 'Default Missions Costs',
@@ -727,4 +729,6 @@ return [
     'set_default_addresses' => 'Set Default Address',
     'send_app'=>'Send App',
     'check_number_length' => 'The number of characters must be more than 8',
+
+    'statistics' => 'Statistics',
 ];

@@ -1,19 +1,24 @@
 <!--begin::Aside-->
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="margin-bottom: 30px;">
+<aside class="main-sidebar sidebar-light-primary elevation-4" style="margin-bottom: 30px;">
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto brand-link" id="kt_aside_logo">
         <!--begin::Logo-->
         @php
-            $model = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
+            $adminTheme = env('ADMIN_THEME', 'adminLte');
+
+            $model = App\Models\Settings::where('group', 'general')
+                ->where('name', 'system_logo')
+                ->first();
         @endphp
         <a href="{{ aurl('/') }}" style="display: flex;justify-content: center;">
-            <img src="{{ $model->getFirstMediaUrl('system_logo') ? $model->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo-white.svg') }}" alt="Logo" style="height: 38px;" class="logo" />
+            <img src="{{ $model->getFirstMediaUrl('system_logo') ? $model->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo-white.svg') }}"
+                alt="Logo" width="50%" class="logo" />
         </a>
         <!--end::Logo-->
     </div>
     <!--end::Brand-->
 
-    <div class="sidebar" >
+    <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
@@ -33,7 +38,8 @@
         <!--begin::Aside menu-->
         <nav class="mt-2" style="padding-bottom: 30px !important;">
             <!--begin::Aside Menu-->
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 <!--begin::Menu-->
                 <li class="nav-item">
                     <a href="{{ fr_route('admin.dashboard') }}"
@@ -45,9 +51,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">@lang('view.pages')</li>
-
-
+                {{-- <li class="nav-header">@lang('view.pages')</li> --}}
 
                 @if (app('hook')->get('aside_menu'))
                     @foreach (aasort(app('hook')->get('aside_menu'), 'order') as $componentView)
@@ -56,10 +60,10 @@
                 @endif
 
                 <li
-                    class="nav-item {{ areActiveRoutes(['shipments.report','missions.report','clients.report','drivers.report','branches.report','transactions.report'],'menu-is-opening menu-open active') }}">
+                    class="nav-item {{ areActiveRoutes(['shipments.report', 'missions.report', 'clients.report', 'drivers.report', 'branches.report', 'transactions.report', 'statistics.index'], 'menu-is-opening menu-open active') }}">
 
                     <a href="#"
-                        class="nav-link  {{ areActiveRoutes(['shipments.report','missions.report','clients.report','drivers.report','branches.report','transactions.report'],'menu-is-opening menu-open active') }}">
+                        class="nav-link  {{ areActiveRoutes(['shipments.report', 'missions.report', 'clients.report', 'drivers.report', 'branches.report', 'transactions.report'], 'menu-is-opening menu-open active') }}">
                         <i class="fas fa-book fa-fw"></i>
                         <p>
                             {{ __('view.reports') }}
@@ -79,11 +83,41 @@
                 </li>
 
 
+                @include('users::' . $adminTheme . '.components.aside_menu')
+                @include('acl::' . $adminTheme . '.components.aside_menu')
+
+
+                @canany(['manage-blog','view-pages','view-menus','view-widgets'])
+                    <li
+                        class="nav-item {{ areActiveRoutes(['posts.index', 'posts.create', 'categories.index', 'tags.index', 'comments.index', 'pages.index', 'menus.index', 'widgets.index'], 'menu-is-opening menu-open active') }}">
+
+                        <a href="#"
+                            class="nav-link  {{ areActiveRoutes(['posts.index', 'posts.create', 'categories.index', 'tags.index', 'comments.index', 'pages.index', 'menus.index', 'widgets.index'], 'menu-is-opening menu-open active') }}">
+                            <i class="fas fa-cogs fa-fw"></i>
+                            <p>
+                                {{ __('view.website_settings') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+
+                        <ul class="nav nav-treeview">
+                            @include('blog::' . $adminTheme . '.components.aside_menu')
+                            @include('pages::' . $adminTheme . '.components.aside_menu')
+                            @include('menu::' . $adminTheme . '.components.aside_menu')
+                            @include('widget::' . $adminTheme . '.components.aside_menu')
+
+                        </ul>
+
+                    </li>
+                @endcanany
+
+                @canany(['manage-setting','manage-notifications-setting','manage-google-setting','manage-theme-setting'])
                 <li
-                    class="nav-item {{ areActiveRoutes(['countries.index','areas.index','deliveryTime.index','packages.index','shipments.settings.fees','shipments.settings','admin.settings','admin.settings.notifications','theme-setting.edit','languages.index','currencies.index','shipments.index','fees.index','admin.settings.google','default-theme.edit'],'menu-is-opening menu-open active') }}">
+                    class="nav-item {{ areActiveRoutes(['countries.index', 'areas.index', 'deliveryTime.index', 'packages.index', 'shipments.settings.fees', 'shipments.settings', 'admin.settings', 'admin.settings.notifications', 'theme-setting.edit', 'languages.index', 'currencies.index', 'shipments.index', 'fees.index', 'admin.settings.google', 'default-theme.edit'], 'menu-is-opening menu-open active') }}">
 
                     <a href="#"
-                        class="nav-link  {{ areActiveRoutes(['countries.index','areas.index','deliveryTime.index','packages.index','shipments.settings.fees','shipments.settings','admin.settings','admin.settings.notifications','theme-setting.edit','languages.index','currencies.index','shipments.index','fees.index','admin.settings.google','default-theme.edit'],'menu-is-opening menu-open active') }}">
+                        class="nav-link  {{ areActiveRoutes(['countries.index', 'areas.index', 'deliveryTime.index', 'packages.index', 'shipments.settings.fees', 'shipments.settings', 'admin.settings', 'admin.settings.notifications', 'theme-setting.edit', 'languages.index', 'currencies.index', 'shipments.index', 'fees.index', 'admin.settings.google', 'default-theme.edit'], 'menu-is-opening menu-open active') }}">
                         <i class="fas fa-cogs fa-fw"></i>
                         <p>
                             {{ __('view.setting') }}
@@ -151,8 +185,9 @@
                     </ul>
 
                 </li>
+                @endcanany
 
-                @if (auth()->user()->role == 1)
+                {{-- @if (auth()->user()->role == 1)
                     <li class="nav-item">
                         <a href="{{ fr_route('addons') }}"
                             class="nav-link {{ areActiveRoutes(['addons']) }}">
@@ -162,9 +197,10 @@
                             </p>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
-                @if (auth()->user()->can('update-system') || auth()->user()->role == 1)
+                {{-- @if (auth()->user()->can('update-system') ||
+    auth()->user()->role == 1)
                     <li class="nav-item">
                         <a href="{{ fr_route('system.update') }}"
                             class="nav-link {{ areActiveRoutes(['system.update']) }}">
@@ -174,7 +210,7 @@
                             </p>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 <!--end::Menu-->
             </ul>

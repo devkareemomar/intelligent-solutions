@@ -445,7 +445,7 @@
                 <div class="form-group">
                     <label class="col-form-label fw-bold fs-6 required" style=" display: block; " >{{ __('cargo::view.receiver_phone') }}</label>
                     <input type="tel" value="{{ old('Shipment.reciver_phone', isset($model) ?$model->follow_up_country_code.$model->reciver_phone : '') }}" placeholder="{{ __('cargo::view.receiver_phone') }}" dir="ltr" autocomplete="off" required   name="Shipment[reciver_phone]" class="phone_input phone_input_2 number-onl form-control @error('Shipment.reciver_phone') is-invalid @enderror"  id="phone" />
-                    <input type="hidden" class="country_code  country_code_2 " name=" Shipment[follow_up_country_code]" value="{{ old('Shipment.follow_up_country_code', isset($model) ?$model->follow_up_country_code : '+234') }}" data-reflection="phone"> 
+                    <input type="hidden" class="country_code  country_code_2 " name=" Shipment[follow_up_country_code]" value="{{ old('Shipment.follow_up_country_code', isset($model) ?$model->follow_up_country_code : '+234') }}" data-reflection="phone">
                     @error('Shipment.reciver_phone')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -1209,7 +1209,7 @@
             var client_phone = $(this).find(':selected').data('phone');
             var client_country_code = $(this).find(':selected').data('country');
 
-            $("#client_phone").val(client_phone);  
+            $("#client_phone").val(client_phone);
             $("#country_code").val(client_country_code);
 
         })
@@ -1748,7 +1748,7 @@
                 document.getElementById('modal_open').click();
             });
         }
-        
+
         $(function () {
             let phoneNumbers_1 = $('.phone_input_1'),
                 wrong_number = window.wrong_number_msg,
@@ -1762,7 +1762,7 @@
                 let iti = window.intlTelInput(input, {
                     separateDialCode: true,
                     utilsScript: window.static_asset_utils_file,
-                    initialCountry: "ng",
+                    initialCountry: "eg",
                     preferredCountries: ["eg","ng","ke"],
                     autoPlaceholder: "aggressive"
                 });
@@ -1833,7 +1833,7 @@
                 let iti = window.intlTelInput(input, {
                     separateDialCode: true,
                     utilsScript: window.static_asset_utils_file,
-                    initialCountry: "ng",
+                    initialCountry: "eg",
                     preferredCountries: ["eg","ng","ke"],
                     autoPlaceholder: "aggressive"
                 });

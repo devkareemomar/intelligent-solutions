@@ -68,7 +68,7 @@
 }
 
 .text-black {
-  color: #000000 !important;
+  color: #0000 !important;
 }
 
 .text-dark {
@@ -1807,9 +1807,9 @@ html {
   }
 }
 
-@media (min-width: 62rem) 
+@media (min-width: 62rem)
 {
-    section#banner div.wrapper 
+    section#banner div.wrapper
     {
         height: 100% !important;
         display: flex !important;
@@ -1823,12 +1823,12 @@ html {
         max-height: unset !important;
         margin-left: auto !important;
     }
-    
-    #good-hands .intro 
+
+    #good-hands .intro
     {
         text-align: unset !important;
     }
-    
+
     section.section .intro h2.heading
     {
         max-width: 700px !important;
@@ -1856,7 +1856,7 @@ html {
 .rtl #navigation ul.bd-components > li:not(.cfix) {
   float: left;
 }
-/* 
+/*
 @media only screen and (max-width: 75rem) {
   #navigation .mobile-items ul,
   #navigation .mobile-items div {

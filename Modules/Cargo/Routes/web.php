@@ -51,7 +51,7 @@ if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module
         Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
         Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
 
-            
+
             //Paypal START
             Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
             Route::get('/paypal/error', 'PaypalController@error')->name('paypal.error');
@@ -296,6 +296,9 @@ if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module
 
             Route::get('/sms-gateways', 'BusinessSettingsController@sms_gateways')->name('sms_gateways.index');
 
+
+            Route::get('/statistics', 'StatisticsController@index')->name('statistics.index');
+
         });
     });
 }else{
@@ -329,7 +332,7 @@ if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module
     });
 
     Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
-    
+
     Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
 
         // SSLCOMMERZ Start

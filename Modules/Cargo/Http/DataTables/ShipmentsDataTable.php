@@ -69,15 +69,19 @@ class ShipmentsDataTable extends DataTable
             ->editColumn('shipping_date', function (Shipment $model) {
                 return $model->shipping_date;
             })
-            ->editColumn('from_state_id', function (Shipment $model) {
-                return $model->from_state_id ? $model->from_state->name : '';
-            })
+            // ->editColumn('from_state_id', function (Shipment $model) {
+            //     return $model->from_state_id ? $model->from_state->name : '';
+            // })
             ->editColumn('to_state_id', function (Shipment $model) {
                 return $model->to_state_id ? $model->to_state->name : '';
             })
             ->editColumn('created_at', function (Shipment $model) {
                 return date('d M, Y H:i', strtotime($model->created_at));
             })
+            ->editColumn('status', function (Shipment $model) {
+                return $model->getStatus();
+            })
+
             ->addColumn('action', function (Shipment $model) {
                 $adminTheme = env('ADMIN_THEME', 'adminLte');return view('cargo::'.$adminTheme.'.pages.shipments.columns.actions', ['model' => $model, 'table_id' => $this->table_id]);
             });
@@ -148,18 +152,19 @@ class ShipmentsDataTable extends DataTable
                     ->width(50),
             Column::make('id')->title(__('cargo::view.table.#'))->width(50),
             Column::make('code')->title(__('cargo::view.table.code')),
+            Column::make('status')->title(__('cargo::view.table.status')),
             Column::make('type')->title(__('cargo::view.table.type')),
             Column::make('branch_id')->title(__('cargo::view.table.branch')),
             Column::make('client_id')->title(__('cargo::view.client')),
             Column::make('shipping_cost')->title(__('cargo::view.shipping_cost')),
             Column::make('payment_method_id')->title(__('cargo::view.payment_method')),
             Column::make('paid')->title(__('cargo::view.paid')),
-            Column::make('from_state_id')->title(__('cargo::view.from_region')),
+            // Column::make('from_state_id')->title(__('cargo::view.from_region')),
             Column::make('to_state_id')->title(__('cargo::view.to_region')),
             Column::make('shipping_date')->title(__('cargo::view.shipping_date')),
             Column::make('created_at')->title(__('view.created_at')),
             Column::computed('action')->title(__('view.action'))->addClass('text-center not-export')->responsivePriority(-1),
-            Column::make('order_id')->visible(false),	
+            Column::make('order_id')->visible(false),
         ];
     }
 

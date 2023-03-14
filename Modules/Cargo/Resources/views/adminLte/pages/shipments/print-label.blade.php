@@ -25,7 +25,7 @@ $cash_payment = 'cash_payment';
                             </td>
                         </tr>
                         <tr>
-                            <td height="21px" colspan="3" style="border-top:#000000  1px solid;border-bottom:#000000 1px solid;">
+                            <td height="21px" colspan="3" style="border-top:#0000  1px solid;border-bottom:#0000 1px solid;">
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="81%" height="21px" valign="top">
@@ -50,7 +50,7 @@ $cash_payment = 'cash_payment';
                                             </table>
                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td style="border-top: 1px solid #000000; border-bottom: 0px solid #000000;">
+                                                    <td style="border-top: 1px solid #0000; border-bottom: 0px solid #0000;">
                                                         <div style="margin-top:1px;">
                                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                                 <tr>
@@ -143,7 +143,7 @@ $cash_payment = 'cash_payment';
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#000000 1px solid;">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#0000 1px solid;">
                                                 <tr>
                                                     <td style="padding:5px; font-size:12px; text-align:center">
                                                         <span style="font-weight:bold; font-size: 14px;">{{ __('cargo::view.contains') }}: </span>
@@ -183,7 +183,7 @@ $cash_payment = 'cash_payment';
                             </td>
                         </tr>
                         <tr>
-                            <td height="21px" colspan="3" style="border-top:#000000  1px solid;border-bottom:#000000 1px solid;">
+                            <td height="21px" colspan="3" style="border-top:#0000  1px solid;border-bottom:#0000 1px solid;">
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="81%" height="21px" valign="top">
@@ -208,7 +208,7 @@ $cash_payment = 'cash_payment';
                                             </table>
                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td style="border-top: 1px solid #000000; border-bottom: 0px solid #000000;">
+                                                    <td style="border-top: 1px solid #000; border-bottom: 0px solid #000;">
                                                         <div style="margin-top:1px;">
                                                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                                 <tr>
@@ -301,7 +301,7 @@ $cash_payment = 'cash_payment';
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#000000 1px solid;">
+                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;border-top:#0000 1px solid;">
                                                 <tr>
                                                     <td style="padding:5px; font-size:12px; text-align:center">
                                                         <span style="font-weight:bold; font-size: 14px;">{{ __('cargo::view.contains') }}: </span>

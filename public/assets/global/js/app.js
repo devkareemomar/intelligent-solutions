@@ -2799,7 +2799,7 @@ $('#section_class_list .sections-search .sections-search-input').on('input', fun
   $(boxClass).removeClass('hide-box'); // show all
 
   if (searchValue != '') {
-    notMatchedSearch.addClass('hide-box'); // hide not matched only 
+    notMatchedSearch.addClass('hide-box'); // hide not matched only
   }
 });
 /********************************************************************************/
@@ -2815,7 +2815,7 @@ $('#widget_class_list .widgets-search .widgets-search-input').on('input', functi
   $(boxClass).removeClass('hide-box'); // show all
 
   if (searchValue != '') {
-    notMatchedSearch.addClass('hide-box'); // hide not matched only 
+    notMatchedSearch.addClass('hide-box'); // hide not matched only
   } // hide group title
 
 
@@ -2854,7 +2854,7 @@ $('#section_class_list .section-list .section-box').on('click', function (e) {
   $(".change_url_type").select2({
     minimumResultsForSearch: -1
   });
-  
+
   $('html, body').animate({
     scrollTop: sectionCreated.offset().top - 200
   }, 400);
@@ -2901,7 +2901,7 @@ $('#widget_class_list .widget-list .widget-box').on('click', function (e) {
   $(".change_url_type").select2({
     minimumResultsForSearch: -1
   });
-  
+
   $('html, body').animate({
     scrollTop: widgetCreated.offset().top - 200
   }, 400);
@@ -23092,7 +23092,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node = 
+    var node =
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -29647,7 +29647,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var ALIGNS = [false, 'center', 'right', 'justify'];
 
-var COLORS = ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc", "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0", "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00", "#666600", "#003700", "#002966", "#3d1466"];
+var COLORS = ["#0000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc", "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0", "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00", "#666600", "#003700", "#002966", "#3d1466"];
 
 var FONTS = [false, 'serif', 'monospace'];
 
@@ -29727,7 +29727,7 @@ var BaseTheme = function (_Theme) {
         } else if (select.classList.contains('ql-background') || select.classList.contains('ql-color')) {
           var format = select.classList.contains('ql-background') ? 'background' : 'color';
           if (select.querySelector('option') == null) {
-            fillSelect(select, COLORS, format === 'background' ? '#ffffff' : '#000000');
+            fillSelect(select, COLORS, format === 'background' ? '#ffffff' : '#0000');
           }
           return new _colorPicker2.default(select, icons[format]);
         } else {
@@ -35429,7 +35429,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -35443,20 +35443,20 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
@@ -35489,7 +35489,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			return result;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -35501,12 +35501,12 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -35517,7 +35517,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -35526,11 +35526,11 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/ 		
+/******/
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
@@ -35542,19 +35542,19 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			"assets/custom/css/custom": 0,
 /******/ 			"assets/global/css/app": 0
 /******/ 		};
-/******/ 		
+/******/
 /******/ 		// no chunk on demand loading
-/******/ 		
+/******/
 /******/ 		// no prefetching
-/******/ 		
+/******/
 /******/ 		// no preloaded
-/******/ 		
+/******/
 /******/ 		// no HMR
-/******/ 		
+/******/
 /******/ 		// no HMR manifest
-/******/ 		
+/******/
 /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
+/******/
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime] = data;
@@ -35579,14 +35579,14 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
-/******/ 		
+/******/
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
@@ -35597,7 +35597,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	__webpack_require__.O(undefined, ["themes/easyship/custom-assets/css/app","assets/custom/css/menus","assets/custom/css/acl","assets/custom/css/custom","assets/global/css/app"], () => (__webpack_require__("./resources/assets/custom/sass/menus.scss")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["themes/easyship/custom-assets/css/app","assets/custom/css/menus","assets/custom/css/acl","assets/custom/css/custom","assets/global/css/app"], () => (__webpack_require__("./themes/easyship/assets/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+/******/
 /******/ })()
 ;
 //# sourceMappingURL=app.js.map

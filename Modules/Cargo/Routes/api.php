@@ -23,6 +23,7 @@ Route::prefix('v1/auth')->group(function () {
     Route::post('signup', 'Api\AuthController@signup');
     Route::post('login', 'Api\AuthController@login');
 
+
 });
 
 Route::get('get-wallet', 'Api\AuthController@getWallet');

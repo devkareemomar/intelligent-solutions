@@ -70,7 +70,7 @@ class CurrencyController extends Controller
         DB::beginTransaction();
         $model = new Currency();
         $model->fill($data);
-        $model->status = 0;        
+        $model->status = 0;
         if (!$model->save()){
             throw new \Exception();
         }
@@ -139,7 +139,7 @@ class CurrencyController extends Controller
     public function update_default_currency(Request $request)
     {
         Currency::where('id', '!=', null)->update(['default' => 0]);
-        
+
         $default_currency = Currency::findOrFail($request->system_default_currency);
         $default_currency->default = 1;
         $default_currency->save();

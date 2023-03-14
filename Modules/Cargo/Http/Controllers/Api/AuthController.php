@@ -21,9 +21,9 @@ class AuthController extends Controller
 {
     public function signup(Request $request)
     {
-        try{	
+        try{
 
-            $data = Validator::make($request->all(), [ 
+            $data = Validator::make($request->all(), [
                 'name'               => 'required|string|min:3|max:50',
                 'email'              => 'required|max:50|email|unique:users,email',
                 'password'           => 'required|string|min:6',
@@ -33,7 +33,7 @@ class AuthController extends Controller
                 'branch_id'          => 'required',
                 'type'               => 'required',
             ]);
-            
+
             if ($data->fails()) {
                 return response()->json($data->errors(), 400);
             }
@@ -41,7 +41,7 @@ class AuthController extends Controller
             $Userdata['name']     = $request->name;
             $Userdata['email']    = $request->email;
             $Userdata['password'] = $request->password;
-            
+
             if($request->type == 'client'){
                 $Userdata['role'] = 4;
                 $model = new Client();
@@ -79,7 +79,7 @@ class AuthController extends Controller
             if (!$model->save()){
                 throw new \Exception();
             }
-            
+
             return response()->json([
                 'remember_token' => $user->remember_token,
                 'token_type'     => 'Bearer',
@@ -95,7 +95,7 @@ class AuthController extends Controller
 			DB::rollback();
 			print_r($e->getMessage());
 			exit;
-			
+
 			flash(translate("Error"))->error();
             return back();
 		}
@@ -112,7 +112,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials))
             return response()->json(['message' => 'Unauthorized', 'user' => null], 401);
         $user = $request->user();
-        
+
         return $this->loginSuccess($user);
     }
 
@@ -145,7 +145,7 @@ class AuthController extends Controller
 
     public function getWallet(Request $request)
     {
-      	
+
         $apihelper = new ApiHelper();
         $user = $apihelper->checkUser($request);
 

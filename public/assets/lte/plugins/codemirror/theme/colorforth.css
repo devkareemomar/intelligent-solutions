@@ -1,4 +1,4 @@
-.cm-s-colorforth.CodeMirror { background: #000000; color: #f8f8f8; }
+.cm-s-colorforth.CodeMirror { background: #0000; color: #f8f8f8; }
 .cm-s-colorforth .CodeMirror-gutters { background: #0a001f; border-right: 1px solid #aaa; }
 .cm-s-colorforth .CodeMirror-guttermarker { color: #FFBD40; }
 .cm-s-colorforth .CodeMirror-guttermarker-subtle { color: #78846f; }
@@ -10,7 +10,7 @@
 .cm-s-colorforth span.cm-keyword     { color: #ffd900; }
 .cm-s-colorforth span.cm-builtin     { color: #00d95a; }
 .cm-s-colorforth span.cm-variable    { color: #73ff00; }
-.cm-s-colorforth span.cm-string      { color: #007bff; }
+.cm-s-colorforth span.cm-string      { color: #e30613; }
 .cm-s-colorforth span.cm-number      { color: #00c4ff; }
 .cm-s-colorforth span.cm-atom        { color: #606060; }
 

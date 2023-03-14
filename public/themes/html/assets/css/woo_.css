@@ -632,7 +632,7 @@ body.rtl .woocommerce .woocommerce-product-rating .star-rating {
  * Woocommerce colors
  * ----------------------------------------------------------------------------- *
  */
-.woocommerce .product:hover h3 {color: #000000}
+.woocommerce .product:hover h3 {color: #0000}
 .woocommerce .product a.button,
 .woocommerce .product #respond input#submit,
 .woocommerce .checkout input#place_order,

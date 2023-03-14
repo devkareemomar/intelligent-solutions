@@ -7,6 +7,17 @@
     $driver = 5;
 @endphp
 
+{{-- auth()->user()->can('shipments-report') || --}}
+@if ( in_array($user_role, [$admin, $client, $branch]) )
+    <li class="nav-item  {{ areActiveRoutes(['statistics.index'], 'menu-is-opening menu-open active') }}">
+        <a href="{{ fr_route('statistics.index') }}"
+            class="nav-link {{ areActiveRoutes(['statistics.index'], 'menu-is-opening menu-open active') }}">
+            <i class="fas fa-box-open fa-fw"></i>
+            <p>{{ __('cargo::view.statistics') }}</p>
+        </a>
+    </li>
+@endif
+
 @if (auth()->user()->can('shipments-report') || in_array($user_role, [$admin, $client, $branch]) )
     <li class="nav-item  {{ areActiveRoutes(['shipments.report'], 'menu-is-opening menu-open active') }}">
         <a href="{{ fr_route('shipments.report') }}"

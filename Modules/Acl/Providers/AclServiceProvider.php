@@ -30,10 +30,10 @@ class AclServiceProvider extends ServiceProvider
 
         // unregister_sidebar('sidebar_user', 'html');
 
-        $adminTheme = env('ADMIN_THEME', 'adminLte');
-        $aside_menu = view('acl::'.$adminTheme.'.components.aside_menu');
-        $aside_menu['order'] = 11;
-        app('hook')->set('aside_menu', $aside_menu, 'array');
+        // $adminTheme = env('ADMIN_THEME', 'adminLte');
+        // $aside_menu = view('acl::'.$adminTheme.'.components.aside_menu');
+        // $aside_menu['order'] = 11;
+        // app('hook')->set('aside_menu', $aside_menu, 'array');
     }
 
     /**
@@ -44,7 +44,7 @@ class AclServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-        
+
         $this->app['events']->listen(\Modules\Acl\Events\PermissionCreatedEvent::class, \Modules\Acl\Listeners\PermissionCreatedListener::class);
         $this->app['events']->listen(\Modules\Acl\Events\RoleCreatedEvent::class, \Modules\Acl\Listeners\RoleCreatedListener::class);
         $this->app['events']->listen(\Modules\Acl\Events\RoleUpdatedEvent::class, \Modules\Acl\Listeners\RoleUpdatedListener::class);

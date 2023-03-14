@@ -15,7 +15,7 @@
         <g id="no-thumbnail">
             <rect id="Rectangle-5" fill="#EEEEEE" x="0" y="0" width="1200" height="900"></rect>
             <g id="">
-                <use fill-opacity="0.05" fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill-opacity="0.05" fill="#0000" fill-rule="evenodd" xlink:href="#path-1"></use>
                 <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
             </g>
         </g>
